@@ -1,18 +1,12 @@
 # config/routes.yaml
 
-# index:
-   # path: /
-   # controller: App\Controller\DefaultController::index
-
-# controllers:
-    # resource: '../src/Controller/'
-    # type:     annotation
-    
-# web_controller:
-    # resource: ../src/Controller/Web/
-    # type: annotation
-
 # rest_controller:
-    # resource: '../src/Controller/Rest/'
-    # type: annotation
+    # resource: 'routes.yaml'
     # prefix: /api
+    
+rest_controller:
+    resource: routes/apiRoutes.yaml
+    prefix: /api
+      
+
+

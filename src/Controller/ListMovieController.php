@@ -20,33 +20,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 final class ListMovieController extends FOSRestController
 {    
-	/**
-     * Creates movies from array and add to listMovie 
-     * @param array/listMovie
-     * @return void
-     */
-	private function addMovies($moviesArray, ListMovie $listMovie, EntityManagerInterface $em):void
-    {
-		foreach ($moviesArray as $movieTemp)
-		{
-			gettype($movieTemp);
-			if (is_integer($movieTemp)) {
-				$movieId = $movieTemp;
-			}
-			else {
-				$movie = new Movie();
-				$movie->setTitle($movieTemp['title']);
-				$movie->setSynopsis($movieTemp['synopsis']);
-				$movie->setAnnee($movieTemp['annee']);
-				$em->persist($movie);
-				// $em->flush();
-				// $movieId = $movie->getId();
-			}
-			
-			$listMovie->addMovie($movie);
-		}	
-    }
-	
 	
 	/**
      * Creates an ListMovie resource
@@ -65,7 +38,6 @@ final class ListMovieController extends FOSRestController
 		
 		//submit data
 		$form->submit($data);//remplir table
-		//dd($listMovie);
 		//if (not valid)
 		if(!$form->isValid()) {
 			throw new BadRequestHttpException($form->getErrors(true));
@@ -107,7 +79,6 @@ final class ListMovieController extends FOSRestController
 		
 		$form = $this->createForm(ListMovieType::class, $listMovie);//build form
 		$data = json_decode($request->getContent(), true);// true for get table relative	
-		//dd($data);
 		$form->submit($data);//remplir table
 		if(!($form->isValid()&&$form->isSubmitted())) {
 			throw new BadRequestHttpException($form->getErrors(true));

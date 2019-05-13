@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations as Rest;
+// use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,7 +21,6 @@ final class MovieController extends FOSRestController
      * Creates an Movie resource
      * @param Request $request
      * @return View
-     * @Rest\Post("/movies", name="postMovie")
      */
     public function postMovie(Request $request, EntityManagerInterface $em): View
     {
@@ -43,7 +42,6 @@ final class MovieController extends FOSRestController
 		
 	/**
 	 * Retrieves an Movie resource
-	 * @Rest\Get("/movies/{movieId}", name="getMovie")
 	 */
 	public function getMovie(int $movieId, EntityManagerInterface $em): View
 	{
@@ -58,7 +56,6 @@ final class MovieController extends FOSRestController
 	
 	/**
 	 * Replaces an Movie resource
-	 * @Rest\Put("/movies/{movieId}", name="putMovie")
 	 */
 	public function putMovie(int $movieId, Request $request, EntityManagerInterface $em) : View
 	{
@@ -83,7 +80,6 @@ final class MovieController extends FOSRestController
 	
 	/**
 	 * Replaces an Movie resource
-	 * @Rest\Patch("/movies/{movieId}", name="patchMovie")
 	 */
 	public function patchMovie(int $movieId, Request $request, EntityManagerInterface $em) : View
 	{
@@ -108,7 +104,6 @@ final class MovieController extends FOSRestController
 	
 	/**
 	 * Deletes an Movie resource
-	 * @Rest\Delete("/movies/{movieId}", name="deleteMovie")
 	 */
 	public function deleteMovie(int $movieId, EntityManagerInterface $em) : View
 	{
@@ -126,7 +121,6 @@ final class MovieController extends FOSRestController
 	
 	/**
 	 * findMovie
-	 * @Rest\Get("/movies", name="findMovie")
 	 */
 	 public function findMovie(Request $request, EntityManagerInterface $em): View
 	{		

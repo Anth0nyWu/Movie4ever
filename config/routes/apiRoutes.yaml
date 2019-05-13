@@ -1,0 +1,81 @@
+# article_show:
+    # path:     /articles/{_locale}/{year}/{slug}.{_format}
+    # controller: App\Controller\ArticleController::show
+    # defaults:
+        # _format: html
+    # requirements:
+        # _locale:  en|fr
+        # _format:  html|rss
+        # year:     \d+
+
+postMovie:
+    path: /movies
+    controller : App\Controller\MovieController::postMovie
+    
+getMovie:
+    path: /movies/{movieId}
+    controller: App\Controller\MovieController::getMovie
+    requirements:
+        movieId: '\d+'
+
+putMovie:
+    path: /movies/{movieId}
+    controller: App\Controller\MovieController::putMovie
+    requirements:
+        movieId: '\d+'
+
+patchMovie:
+    path: /movies/{movieId}
+    controller: App\Controller\MovieController::patchMovie
+    requirements:
+        movieId: '\d+'
+        
+deleteMovie:
+    path: /movies/{movieId}
+    controller: App\Controller\MovieController::deleteMovie
+    requirements:
+        movieId: '\d+'
+        
+findMovie:
+    path: /movies
+    controller : App\Controller\MovieController::findMovie
+
+postListMovie: 
+    path: /listMovies
+    controller : App\Controller\ListMovieController::postListMovie
+    
+getListMovie: 
+    path: /listMovies/{listMovieId}
+    controller : App\Controller\ListMovieController::getListMovie
+    requirements:
+        listMovieId: '\d+'
+        
+putListMovie: 
+    path: /listMovies/{listMovieId}
+    controller : App\Controller\ListMovieController::putListMovie
+    requirements:
+        listMovieId: '\d+'
+        
+patchListMovie: 
+    path: /listMovies/{listMovieId}
+    controller : App\Controller\ListMovieController::patchListMovie
+    requirements:
+        listMovieId: '\d+'
+        
+deleteListMovie: 
+    path: /listMovies/{listMovieId}
+    controller : App\Controller\ListMovieController::deleteListMovie
+    requirements:
+        listMovieId: '\d+'
+        
+addToListMovie:
+    path: /listMovies/{listMovieId}/add
+    controller : App\Controller\ListMovieController::addToListMovie
+    requirements:
+        listMovieId: '\d+'
+        
+delFromListMovie:
+    path: /listMovies/{listMovieId}/del
+    controller : App\Controller\ListMovieController::delFromListMovie
+    requirements:
+        listMovieId: '\d+'

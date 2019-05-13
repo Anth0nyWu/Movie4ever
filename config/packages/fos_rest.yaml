@@ -1,0 +1,32 @@
+# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+fos_rest: 
+#    param_fetcher_listener:  true
+#    allowed_methods_listener:  true
+#    routing_loader: true
+#    view:
+#        view_response_listener:  true
+#    exception:
+#        codes:
+#            App\Exception\MyException: 403
+#        messages:
+#            App\Exception\MyException: Forbidden area.
+#    format_listener:
+#        rules:
+#            - { path: ^/api, prefer_extension: true, fallback_format: json, priorities: [ json, html ] }
+    view:
+        view_response_listener:  true
+    format_listener:
+        rules:
+            - { path: ^/api, prefer_extension: true, fallback_format: json, priorities: [ json ] }
+            - { path: ^/form, prefer_extension: true, fallback_format: json, priorities: [ json ] }
+            
+    # exception:
+        # codes:
+            # App\Exception\MyException: 404
+        # messages:
+            # App\Exception\MyException: ENtity Not FOund.
+    #反正上边写法不好使，下边好使
+    exception:
+        exception_controller: 'fos_rest.exception.controller:showAction'
+        codes:
+            Doctrine\ORM\EntityNotFoundException: 404

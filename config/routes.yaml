@@ -1,8 +1,4 @@
 # config/routes.yaml
-
-# rest_controller:
-    # resource: 'routes.yaml'
-    # prefix: /api
     
 rest_controller:
     resource: routes/apiRoutes.yaml

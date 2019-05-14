@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations as Rest;
+// use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,7 +25,6 @@ final class ListMovieController extends FOSRestController
      * Creates an ListMovie resource
      * @param Request $request
      * @return View
-     * @Rest\Post("/listMovies", name="postListMovie")
      */
     public function postListMovie(Request $request, EntityManagerInterface $em): View
     {
@@ -53,7 +52,6 @@ final class ListMovieController extends FOSRestController
 		
 	/**
 	 * Retrieves an ListMovie resource
-	 * @Rest\Get("/listMovies/{listMovieId}", name="getListMovie")
 	 */
 	public function getListMovie(int $listMovieId, EntityManagerInterface $em): View
 	{
@@ -68,7 +66,6 @@ final class ListMovieController extends FOSRestController
 	
 	/**
 	 * Replaces an ListMovie resource
-	 * @Rest\Put("/listMovies/{listMovieId}", name="putListMovie")
 	 */
 	public function putListMovie(int $listMovieId, Request $request, EntityManagerInterface $em) : View
 	{
@@ -93,7 +90,6 @@ final class ListMovieController extends FOSRestController
 	
 	/**
 	 * Replaces an ListMovie resource
-	 * @Rest\Patch("/listMovies/{listMovieId}", name="patchListMovie")
 	 */
 	 
 	public function patchListMovie(int $listMovieId, Request $request, EntityManagerInterface $em) : View
@@ -117,7 +113,6 @@ final class ListMovieController extends FOSRestController
 	
 	/**
 	 * Deletes an ListMovie resource
-	 * @Rest\Delete("/listMovies/{listMovieId}", name="deleteListMovie")
 	 */
 	public function deleteListMovie(int $listMovieId, EntityManagerInterface $em) : View
 	{
@@ -139,7 +134,6 @@ final class ListMovieController extends FOSRestController
      * @param Request $request
      * @return View
 	 * 
-     * @Rest\Put("/listMovies/{listMovieId}/add", name="addToListMovie")
      */
     public function addToListMovie(int $listMovieId, Request $request, EntityManagerInterface $em, ListMovieController $listMovieController)//: View
     {
@@ -170,7 +164,6 @@ final class ListMovieController extends FOSRestController
      * @param Request $request
      * @return View
 	 * 
-     * @Rest\Put("/listMovies/{listMovieId}/del", name="delFromListMovie")
      */
 	public function delFromListMovie(int $listMovieId, Request $request, EntityManagerInterface $em, ListMovieController $listMovieController)//: View
     {			

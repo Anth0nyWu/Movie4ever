@@ -10,7 +10,6 @@ use App\Validator\Constraints as AcmeAssert;
 
 /**
  * Class Movie
- * @ORM\Entity(repositoryClass="App\Repository\MovieRepository")
  * @package App\Entity\Movie
  */
 Class Movie
@@ -20,15 +19,11 @@ Class Movie
 	//================================
 	
 	/**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
      * @var int
      */
 	private $id;
 
 	/**
-     * @ORM\Column(type="string")
      * @var string
 	 * @Assert\NotBlank
 	 * @Assert\Length(max=30)
@@ -36,7 +31,6 @@ Class Movie
 	private $title;
 	
 	/**
-     * @ORM\Column(type="string")
      * @var string
 	 * @Assert\NotBlank
 	 * @Assert\Length(max=300)
@@ -44,7 +38,6 @@ Class Movie
 	private $synopsis;	//introduction
 	
 	/**
-     * @ORM\Column(type="integer")
      * @var int
 	 * @Assert\NotBlank
 	 * @Assert\Length(max=4)
@@ -56,7 +49,6 @@ Class Movie
 	
     /**
      * Many Movies have Many ListMovies.
-     * @ORM\ManyToMany(targetEntity="ListMovie", mappedBy="movies")
      * @Assert\NotBlank
 	 */
     private $listMovies;

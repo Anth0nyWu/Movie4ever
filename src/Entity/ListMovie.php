@@ -9,7 +9,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class List_Movie
- * @ORM\Entity
  * @package App\Entity\Movie
  */
 Class ListMovie
@@ -19,29 +18,22 @@ Class ListMovie
 	//================================
 	
 	/**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
      * @var int
      */
 	private $id;
 
 	/**
-     * @ORM\Column(type="string")
      * @var string
      */
 	private $name;	//nom de liste
 	
 	/**
-     * @ORM\Column(type="string")
      * @var string
      */
 	private $description;	//introduction
 	
 	/**
      * Many Lists have Many Films.
-     * @ORM\ManyToMany(targetEntity="Movie", inversedBy="listMovies")
-     * @ORM\JoinTable(name="listMovies_movies")
 	 * 
      */
     private $movies;

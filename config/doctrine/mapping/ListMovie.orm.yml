@@ -1,0 +1,33 @@
+App\Entity\ListMovie:
+  type: entity
+  # repositoryClass: App\Repository\MovieRepository
+  # table: movies
+  # schema: schema_name # The schema the table lies in, for platforms that support schemas (Optional, >= 2.5)
+  # readOnly: true
+  # indexes:
+    # name_index:
+      # columns: [ name ]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      # length: 50
+    description:
+      type: string
+      # length: 300
+  manyToMany:
+    movies:
+      targetEntity: Movie
+      inversedBy: listMovies
+      # joinTable:
+        # name: listMovies_movies
+        # joinColumns:
+          # movie_id:
+            # referencedColumnName: id
+        # inverseJoinColumns:
+          # movieList_id:
+            # referencedColumnName: id

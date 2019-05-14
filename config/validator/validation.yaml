@@ -1,0 +1,35 @@
+# config/validator/validation.yaml
+App\Entity\Movie:
+    properties:
+        title:
+            - NotBlank: ~
+            - Length: 
+                max: 30
+        synopsis: 
+            - NotBlank: ~
+            - Length: 
+                max: 300
+        annee:
+            - NotBlank: ~
+            - Length: 
+                max: 4
+            - GreaterThanOrEqual: 1900
+            # - LessThanOrEqual: 2020
+            - App\Validator\Constraints\ContainsThisYear: ~
+        listMovies: 
+            - NotBlank: ~
+            
+App\Entity\ListMovie:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length: 
+                max: 30
+        description: 
+            - NotBlank: ~
+            - Length: 
+                max: 300
+        movies: 
+            - NotBlank: ~
+   
+        

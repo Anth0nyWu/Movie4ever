@@ -25,31 +25,21 @@ Class Movie
 
 	/**
      * @var string
-	 * @Assert\NotBlank
-	 * @Assert\Length(max=30)
      */
 	private $title;
 	
 	/**
      * @var string
-	 * @Assert\NotBlank
-	 * @Assert\Length(max=300)
      */
 	private $synopsis;	//introduction
 	
 	/**
      * @var int
-	 * @Assert\NotBlank
-	 * @Assert\Length(max=4)
-	 * @Assert\GreaterThanOrEqual(1900)
-	 * @Assert\LessThanOrEqual(2020)
-	 * @AcmeAssert\ContainsThisYear
      */
 	private $annee;	//annee de sortie
 	
     /**
      * Many Movies have Many ListMovies.
-     * @Assert\NotBlank
 	 */
     private $listMovies;
 	

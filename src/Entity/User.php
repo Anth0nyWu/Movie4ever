@@ -4,35 +4,40 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="json")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
      */
     private $password;
+    
+    /**
+     * @var arraycollection
+     * a user has many lists of movies
+     */
+    private $listMovies;
+    
 
+    //===========================================
+    //Getters & Setters
+    //===========================================
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +76,7 @@ class User implements UserInterface
 
         return array_unique($roles);
     }
+  
 
     public function setRoles(array $roles): self
     {
@@ -89,8 +95,8 @@ class User implements UserInterface
 
     public function setPassword(string $password): self
     {
+        // $password = $encoder->encodePassword($this, $password);
         $this->password = $password;
-
         return $this;
     }
 
@@ -110,4 +116,22 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+    
+    /*
+     * @return ArrayCollection
+     */
+    public function getListMovies() //:ArrayCollection
+    {
+        return $this->listMovies;
+        
+    }
+    
+    /**
+     * @param ArrayCollection $listMovies
+     */
+	public function setListMovies(ArrayCollection $listMovies): void
+	{
+		$this->listMovies = $listMovies;
+	}
+    
 }

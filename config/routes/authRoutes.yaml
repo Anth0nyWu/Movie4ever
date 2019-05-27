@@ -1,0 +1,7 @@
+# name : auth_controller
+# prefix ：/auth
+postUser:
+    path: /users
+    controller : App\Controller\UserController::postUser
+    methods: POST
+    

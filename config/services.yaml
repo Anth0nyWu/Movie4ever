@@ -6,6 +6,7 @@
 parameters:
     locale: 'en'
     env(DATABASE_HOST): localhost
+    # jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
 services:
     # default configuration for services in *this* file
     _defaults:

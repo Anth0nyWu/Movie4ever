@@ -11,11 +11,11 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            anonymous: true
+        # dev:
+            # pattern: ^/(_(profiler|wdt)|css|images|js)/
+            # security: false
+        # main:
+            # anonymous: true
 
             # activate different ways to authenticate
 
@@ -27,6 +27,22 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+        oauth_token:
+            pattern:    ^/oauth/v2/token
+            security:   false
+
+        # oauth_authorize:
+            # pattern:    ^/oauth/v2/auth
+            # Add your favorite authentication process here
+
+        api:
+            pattern:    ^/api
+            fos_oauth:  true
+            stateless:  true
+            anonymous:  false # can be omitted as its default value
+    
+    
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api, roles: ROLE_USER }

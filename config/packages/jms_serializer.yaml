@@ -1,0 +1,30 @@
+jms_serializer:
+    visitors:
+        xml_serialization:
+            format_output: '%kernel.debug%'
+#    metadata:
+#        auto_detection: false
+#        directories:
+#            any-name:
+#                namespace_prefix: "My\\FooBundle"
+#                path: "@MyFooBundle/Resources/config/serializer"
+#            another-name:
+#                namespace_prefix: "My\\BarBundle"
+#                path: "@MyBarBundle/Resources/config/serializer"
+    metadata:
+        auto_detection: false
+        directories:
+            Entity:
+                namespace_prefix: "App\\Entity"
+                # name space of class that want to serialize
+                path: "%kernel.root_dir%/../config/serializer/"
+                # nimporte: "quoi"
+                #path of .yml
+            # ListMovie:
+                # namespace_prefix:"App"
+                # path:"@App/conflg/serializer"
+                # @App means App is AppBundle
+
+    default_context:
+        serialization:
+            enable_max_depth_checks: true

@@ -22,7 +22,7 @@ doctrine:
     dbal:
         # configure these for your database server
         driver: 'pdo_mysql'
-        server_version: '5.7'
+        server_version: 'mariadb-10.1.34'
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4
@@ -40,6 +40,12 @@ doctrine:
                 dir: '%kernel.project_dir%/config/doctrine/mapping'
                 prefix: 'App\Entity'
                 alias: App
+            Oauth:
+                is_bundle: false
+                type: yml
+                dir: '%kernel.project_dir%/config/doctrine/mapping/Oauth'
+                prefix: 'App\Entity\Oauth'
+                alias: App\Oauth
             # AppBundle:
                 # type: yml
                 # dir: config/doctrine'

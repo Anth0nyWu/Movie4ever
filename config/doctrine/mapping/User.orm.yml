@@ -1,0 +1,32 @@
+App\Entity\User:
+  type: entity
+  repositoryClass: App\Repository\UserRepository
+  # table: movies
+  # schema: schema_name # The schema the table lies in, for platforms that support schemas (Optional, >= 2.5)
+  # readOnly: true
+  # indexes:
+    # name_index:
+      # columns: [ name ]
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    email:
+      type: string
+      length: 50
+      unique: true
+      nullable: false
+    roles:
+      type: json
+    password: 
+      type: string
+      
+  oneToMany:
+    listMovies: 
+      targetEntity: ListMovie
+      mappedBy: user
+            
+        
+

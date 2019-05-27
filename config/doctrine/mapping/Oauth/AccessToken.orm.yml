@@ -1,0 +1,31 @@
+App\Entity\Oauth\AccessToken:
+  type: entity
+  
+  attributeOverride:
+    token:
+      type: string
+      length: 191
+      unique: true
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+
+  manyToOne:
+    client: 
+    # member name
+      targetEntity: Client 
+      # class name
+      joinColumn: 
+      # table in DB
+        nullable: false
+        # name: address_id
+        # referencedColumnName: id
+    user:
+        targetEntity: App\Entity\User
+        joinColumn:
+            name: user_id
+            referencedColumnName: id
+            onDelete: CASCADE

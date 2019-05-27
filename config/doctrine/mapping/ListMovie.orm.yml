@@ -1,6 +1,6 @@
 App\Entity\ListMovie:
   type: entity
-  # repositoryClass: App\Repository\MovieRepository
+  repositoryClass: App\Repository\ListMovieRepository
   # table: movies
   # schema: schema_name # The schema the table lies in, for platforms that support schemas (Optional, >= 2.5)
   # readOnly: true
@@ -31,3 +31,17 @@ App\Entity\ListMovie:
         # inverseJoinColumns:
           # movieList_id:
             # referencedColumnName: id
+  manyToOne:
+    user: 
+    # member name
+      targetEntity: User
+      mappedBy: listMovie
+      # class name
+      joinColumn: 
+      # table in DB
+        nullable: false
+        user_id:
+            referencedColumnName: id
+        # name: address_id
+        # referencedColumnName: id
+        

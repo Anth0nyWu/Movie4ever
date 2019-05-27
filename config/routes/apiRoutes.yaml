@@ -1,3 +1,6 @@
+# name: rest_controller
+# prefix: /api
+
 # article_show:
     # path:     /articles/{_locale}/{year}/{slug}.{_format}
     # controller: App\Controller\ArticleController::show
@@ -7,75 +10,137 @@
         # _locale:  en|fr
         # _format:  html|rss
         # year:     \d+
+#======================
+#route for Movies
+#======================
 
 postMovie:
     path: /movies
     controller : App\Controller\MovieController::postMovie
-    
+    methods: POST
 getMovie:
     path: /movies/{movieId}
     controller: App\Controller\MovieController::getMovie
+    methods: GET
     requirements:
         movieId: '\d+'
 
 putMovie:
     path: /movies/{movieId}
     controller: App\Controller\MovieController::putMovie
+    methods: PUT
     requirements:
         movieId: '\d+'
 
 patchMovie:
     path: /movies/{movieId}
     controller: App\Controller\MovieController::patchMovie
+    methods: PATCH
     requirements:
         movieId: '\d+'
         
 deleteMovie:
     path: /movies/{movieId}
     controller: App\Controller\MovieController::deleteMovie
+    methods: DELETE
     requirements:
         movieId: '\d+'
-        
+ 
+# getMovie without id but with query 
 findMovie:
     path: /movies
     controller : App\Controller\MovieController::findMovie
+    methods: GET
 
+  
+#======================
+#route for ListMovies
+#======================
+# /listMovies: collection of listMovies
+# /listMovies/{listMovieId}: a listMovies with id
+ 
 postListMovie: 
     path: /listMovies
     controller : App\Controller\ListMovieController::postListMovie
+    methods: POST
     
 getListMovie: 
     path: /listMovies/{listMovieId}
     controller : App\Controller\ListMovieController::getListMovie
+    methods: GET
     requirements:
         listMovieId: '\d+'
         
 putListMovie: 
     path: /listMovies/{listMovieId}
     controller : App\Controller\ListMovieController::putListMovie
+    methods: PUT
     requirements:
         listMovieId: '\d+'
         
 patchListMovie: 
     path: /listMovies/{listMovieId}
     controller : App\Controller\ListMovieController::patchListMovie
+    methods: PATCH
     requirements:
         listMovieId: '\d+'
         
 deleteListMovie: 
     path: /listMovies/{listMovieId}
     controller : App\Controller\ListMovieController::deleteListMovie
+    methods: DELETE
     requirements:
         listMovieId: '\d+'
         
 addToListMovie:
     path: /listMovies/{listMovieId}/add
     controller : App\Controller\ListMovieController::addToListMovie
+    methods: PUT
     requirements:
         listMovieId: '\d+'
         
 delFromListMovie:
     path: /listMovies/{listMovieId}/del
     controller : App\Controller\ListMovieController::delFromListMovie
+    methods: PUT
     requirements:
         listMovieId: '\d+'
+        
+findInMyListMovies: 
+    path: /listMovies/my
+    controller : App\Controller\ListMovieController::findMyListMovie
+    methods: GET
+    
+findInAllListMovie: 
+    path: /listMovies/all
+    controller : App\Controller\ListMovieController::findAllListMovie
+    methods: GET    
+
+findLikeInMyListMovies: 
+    path: /listMovies/mylike
+    controller : App\Controller\ListMovieController::findLikeMyListMovie
+    methods: GET
+    
+findLikeInAllListMovies: 
+    path: /listMovies/alllike
+    controller : App\Controller\ListMovieController::findLikeAllListMovie
+    methods: GET
+    
+
+#======================
+#route for Users
+#======================
+
+getUser:
+    path: /users/{userId}
+    controller : App\Controller\UserController::getUserById
+    methods: GET
+    requirements:
+        movieId: '\d+'
+    
+delUser:
+    path: /users/{userId}
+    controller : App\Controller\UserController::deleteUser
+    methods: DELETE
+    requirements:
+        movieId: '\d+'

@@ -135,9 +135,14 @@ final class MovieController extends FOSRestController
 		}
 		$movies = $em->getRepository(Movie::class)->findBy($search);
 		
-		if((!strcmp($request->query->get('type'),'start')) && ($request->query->get('keyWord'))) {
+		if((!strcmp($request->query->get('type'),'like')) && ($request->query->get('keyWord'))) {
 			$keySearch['keyWord'] = $request->query->get('keyWord');
-			$movies = $em->getRepository(Movie::class)->findBeginWith($keySearch['keyWord']);
+			$movies = $em->getRepository(Movie::class)->findLike($keySearch['keyWord']);
+			
+		}
+        if((!strcmp($request->query->get('type'),'start')) && ($request->query->get('keyWord'))) {
+			$keySearch['keyWord'] = $request->query->get('keyWord');
+			$movies = $em->getRepository(Movie::class)->findStart($keySearch['keyWord']);
 			
 		}
 		

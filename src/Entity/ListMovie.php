@@ -34,9 +34,13 @@ Class ListMovie
 	
 	/**
      * Many Lists have Many Films.
-	 * 
      */
     private $movies;
+    
+    /**
+     * Many Lists owned by same User.
+     */
+    private $user;
 	
 	//====================================
 	//fonctions
@@ -107,6 +111,22 @@ Class ListMovie
 	public function setMovies(ArrayCollection $movies): void
 	{
 		$this->movies = $movies;
+	}
+    
+    /**
+     * @return User
+     */
+	public function getUser()	//: User
+	{
+		return $this->user;
+	}
+	
+	/**
+     * @param User $user
+     */
+	public function setUser(User $user): void
+	{
+		$this->user = $user;
 	}
 	
 	/**

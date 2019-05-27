@@ -257,30 +257,7 @@ final class ListMovieController extends FOSRestController
 		// In case our GET was a success we need to return a 200 HTTP OK response with the request object
 		return View::create($listMovies, Response::HTTP_OK);	
 	}
-
-    /**
-	 * findLike in AllListMovie
-	 */
-	 public function findLikeAllListMovie(Request $request, EntityManagerInterface $em): View
-	{		
-		$search = [];
-
-        if($request->query->get('keyWord')) {
-			$search['keyWord'] = $request->query->get('keyWord');
-            
-            if($request->query->get('user')) {
-                $search['user'] = $request->query->get('user');
-                $listMovies = $em->getRepository(ListMovie::class)->findLikeId($search['keyWord'],$search['user']);
-            }
-            else {
-			$listMovies = $em->getRepository(ListMovie::class)->findLikeAll($search['keyWord']);
-            }
-        }
-		// In case our GET was a success we need to return a 200 HTTP OK response with the request object
-		return View::create($listMovies, Response::HTTP_OK);	
-	}
-
-
+        
     /**
 	 * find in MyListMovie
 	 */
@@ -297,6 +274,29 @@ final class ListMovieController extends FOSRestController
 		// In case our GET was a success we need to return a 200 HTTP OK response with the request object
 		return View::create($listMovies, Response::HTTP_OK);	
 	}
+
+    /**
+	 * findLike in AllListMovie
+	 */
+	 public function findLikeAllListMovie(Request $request, EntityManagerInterface $em): View
+	{		
+		$search = [];
+
+        if($request->query->get('keyWord')) {
+			$search['keyWord'] = $request->query->get('keyWord');
+            
+            if($request->query->get('user')) {
+                $userId = $request->query->get('user');
+			$search['user'] =  $em->getRepository(User::class)->find($userId);
+            $listMovies = $em->getRepository(ListMovie::class)->findLikeId($search['keyWord'],$search['user']);
+            }
+            else {
+			$listMovies = $em->getRepository(ListMovie::class)->findLikeAll($search['keyWord']);
+            }
+        }
+		// In case our GET was a success we need to return a 200 HTTP OK response with the request object
+		return View::create($listMovies, Response::HTTP_OK);	
+	}
     
     /**
 	 * findLike in MyListMovie
@@ -304,11 +304,9 @@ final class ListMovieController extends FOSRestController
 	 public function findLikeMyListMovie(Request $request, EntityManagerInterface $em): View
 	{		
 		$search = [];
-		
-        $search['userId'] = $this->getUser()->getId();
         if($request->query->get('keyWord')) {
 			$search['keyWord'] = $request->query->get('keyWord');
-			$listMovies = $em->getRepository(ListMovie::class)->findLikeId($search['keyWord'],$search['userId']);
+			$listMovies = $em->getRepository(ListMovie::class)->findLikeId($search['keyWord'],$this->getUser());
 		}
        
 		// In case our GET was a success we need to return a 200 HTTP OK response with the request object

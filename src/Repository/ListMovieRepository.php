@@ -27,10 +27,9 @@ class ListMovieRepository extends ServiceEntityRepository
 		$qb = $this->createQueryBuilder('lm');
         // alias 'lm' with current class (ListMovie)
 		$res =	$qb
-        ->leftJoin('lm.user', 'lmu')
-        // left join and alias
-        ->andWhere('lm.name LIKE :tempLm
-                AND lmu.id = :userIdTemp')
+        // ->leftJoin('lm.user', 'lmu')        // left join and alias
+        // ->andWhere('lm.name LIKE :tempLm AND lmu.id = :userIdTemp')
+        ->andWhere('lm.name LIKE :tempLm AND lm.user = :userIdTemp')
         // give value (place holder) to 'u.title' and 'lum.id'
 		->setParameter('tempLm',"%$keyWord%") // = '%'.$keyWord.'%'
         ->setParameter('userIdTemp', $userId)

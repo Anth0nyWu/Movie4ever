@@ -1,0 +1,13 @@
+App\Entity\Movie:
+    exclusion_policy: ALL
+
+    properties:
+
+        id:
+            expose: true
+        title:
+            expose: true
+        annee:
+            expose: true
+        synopsis:
+            expose: true

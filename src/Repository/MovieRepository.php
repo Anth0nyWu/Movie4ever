@@ -21,11 +21,27 @@ class MovieRepository extends ServiceEntityRepository
      * @param $keyWord
      * @return Movie[]
      */
-    public function findBeginWith($keyWord): array
+    public function findLike($keyWord): array
     {		
 		$qb = $this->createQueryBuilder('u');
 		$res =	$qb->where($qb->expr()->like('u.title', ':toto'))
 		->setParameter('toto',"%$keyWord%") // = '%'.$keyWord.'%'
+		->getQuery()
+		->getResult();//quand on attend result
+
+        return $res;
+		//return $qb->execute();//quand il y a un changement
+    }
+    	
+    /**
+     * @param $keyWord
+     * @return Movie[]
+     */
+    public function findStart($keyWord): array
+    {		
+		$qb = $this->createQueryBuilder('u');
+		$res =	$qb->where($qb->expr()->like('u.title', ':toto'))
+		->setParameter('toto',"$keyWord%") // = '%'.$keyWord.'%'
 		->getQuery()
 		->getResult();//quand on attend result
 

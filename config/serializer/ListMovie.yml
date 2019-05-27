@@ -1,0 +1,19 @@
+App\Entity\ListMovie:
+    exclusion_policy: ALL
+
+    properties:
+        
+        
+        id:
+            expose: true
+        name:
+            expose: true
+        description:
+            expose: true            
+        user:
+            expose: true
+
+        movies:
+            expose: true
+            max_depth: 1
+

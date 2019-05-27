@@ -3,6 +3,14 @@
 rest_controller:
     resource: routes/apiRoutes.yaml
     prefix: /api
-      
+    
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
 
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+      
+auth_controller:
+    resource: routes/authRoutes.yaml
+    prefix: /auth
 
